@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h4 class="text-center mt-3">Seus Artigos:</h4>
+            <h4 class="text-secondary text-center my-4">Seus Artigos:</h4>
             <p></p>
         </div>
     </div>

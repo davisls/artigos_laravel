@@ -9,7 +9,8 @@ use App\Models\User;
 class ArtigoController extends Controller
 {
     public function cadastro() {
-        return view('store');
+        $user = auth()->user();
+        return view('store', ['user' => $user]);
     }
 
     public function store(Request $request){
@@ -48,9 +49,11 @@ class ArtigoController extends Controller
 
     public function edit($id){
 
+        $user = auth()->user();
+
         $artigo = Artigo::findOrFail($id);
 
-        return view('edit', ['artigo' => $artigo]);
+        return view('edit', ['artigo' => $artigo, 'user' => $user]);
 
     }
 

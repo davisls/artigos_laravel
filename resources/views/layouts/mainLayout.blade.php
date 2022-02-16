@@ -29,7 +29,7 @@
                         @endguest
                         @auth
                         <li class="nav-item">
-                            <a href="/store/criar" class="nav-link">Cadastrar Artigo</a>
+                            <a href="/store" class="nav-link">Cadastrar Artigo</a>
                         </li>
                         <li class="nav-item">
                             <a href="/dashboard" class="nav-link">Dashboard</a>
@@ -50,6 +50,11 @@
                         <input class="form-control" type="search" name="search">
                         <button class="btn btn-outline-info" type="submit">Search</button>
                     </form>
+                    @auth
+                        <a href="/profile/{{$user->id}}">
+                            <img src="{{url('img/' . $user->profile_photo)}}" class="img-profile ml-3">
+                        </a>
+                    @endauth
                   </div>
 
             </nav>

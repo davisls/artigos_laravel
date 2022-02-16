@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
     public function index() {
 
+        $user = auth()->user();
         $search = request('search');
 
         if($search){
@@ -19,7 +20,6 @@ class HomeController extends Controller
             $artigos = Artigo::all();
         }
 
-
-        return view('home', ['artigos' =>  $artigos, 'search' => $search]);
+        return view('home', ['artigos' =>  $artigos, 'search' => $search, 'user' => $user]);
     }
 }

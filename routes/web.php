@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtigoController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -18,10 +19,13 @@ use App\Http\Controllers\ArtigoController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/store/criar', [ArtigoController::class, 'cadastro'])->middleware('auth');
+Route::get('/store', [ArtigoController::class, 'cadastro'])->middleware('auth');
 Route::get('/artigo/{id}', [ArtigoController::class, 'show']);
 Route::post('/store', [ArtigoController::class, 'store'])->middleware('auth');
 Route::delete('/artigo/{id}', [ArtigoController::class, 'destroy'])->middleware('auth');
 Route::get('artigo/edit/{id}', [ArtigoController::class, 'edit'])->middleware('auth');
 Route::put('artigo/edit/{id}', [ArtigoController::class, 'update'])->middleware('auth');
 Route::get('/dashboard', [ArtigoController::class, 'dashboard'])->middleware('auth');
+
+Route::get('/profile/{id}', [UserController::class, 'show'])->middleware('auth');
+Route::put('profile/edit/{id}', [UserController::class, 'update'])->middleware('auth');

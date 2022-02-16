@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $artigo->title }}</h5>
                     <p class="card-text">{{ $artigo->description }}</p>
-                    <p class="text-muted text-right my-0">Created By: {{ $artigoOwner['name']  }}</p>
+                    <p class="text-muted text-right my-0">Created By: <a href="/profile/{{ $artigoOwner['id'] }}" class="text-muted"> {{ $artigoOwner['name']  }}</a></p>
                     <p class="text-muted text-right my-0">Post At: {{ date('d/m/Y - H:i', strtotime($artigo->created_at))  }}</p>
                     @auth
                         @if($artigo->user_id == $user->id)
