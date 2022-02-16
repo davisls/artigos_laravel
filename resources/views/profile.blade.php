@@ -1,6 +1,6 @@
 @extends('layouts.mainLayout')
 
-@section('title', 'Home')
+@section('title', 'Profile')
 
 @section('content')
 
@@ -11,11 +11,13 @@
             <div class="card my-3">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ $user_show->name }}</h5>
-                    <img src="{{url('img/' . $user_show->profile_photo)}}" class="rounded mx-auto d-block mt-4" width="250px" height="200px">
+                    <p class="text-center">Ingressou em: {{ date('d/m/Y', strtotime($user->created_at)) }}</p>
+                    <p class="text-center">Artigos Postados: {{ $countArtigos }}</p>
+                    <img src="{{url('img/' . $user_show->profile_photo)}}" class="rounded mx-auto d-block mt-4 mb-3" width="250px" height="200px">
 
                     @if($user->id == $user_show->id)
                         <div class="row">
-                            <form action="/profile/edit/{{$user->id}}" method="POST" class="mx-auto mt-3" enctype="multipart/form-data">
+                            <form action="/profile/edit/{{$user->id}}" method="POST" class="mx-auto mt-1" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="text-center">

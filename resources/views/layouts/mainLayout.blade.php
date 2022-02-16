@@ -32,7 +32,7 @@
                             <a href="/store" class="nav-link">Cadastrar Artigo</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">Dashboard</a>
+                            <a href="/dashboard" class="nav-link">Meus Artigos</a>
                         </li>
                         <li class="nav-item">
                             <form action="/logout" method="post">

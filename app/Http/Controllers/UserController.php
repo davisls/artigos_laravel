@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Artigo;
 
 class UserController extends Controller
 {
@@ -12,7 +13,10 @@ class UserController extends Controller
         $user = auth()->user();
         $user_show = User::findOrFail($id);
 
-        return view('profile', ['user_show' => $user_show, 'user' => $user]);
+        $countArtigos = count($user_show ->artigos()->get());
+
+        return view('profile', ['user_show' => $user_show, 'user' => $user,
+        'countArtigos' => $countArtigos]);
 
     }
 

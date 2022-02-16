@@ -17,14 +17,33 @@ class ArtigoController extends Controller
 
         $artigo = new Artigo;
 
-        $artigo->title = $request->title;
-        $artigo->description = $request->description;
+        if(!$request->title || !$request->description || !$request->preview){
 
-        $user = auth()->user();
-        $artigo->user_id = $user->id;
-        $artigo->save();
+            return back()->with('msg-failed', 'Não foi possível publicar o seu artigo!');
 
-        return redirect('/')->with('msg-success', 'Artigo criado com sucesso!');
+        }
+
+        if(strlen($request->title) < 6 || strlen($request->title) > 30){
+            return back()->with('msg-failed', 'Seu título deve conter entre 6 e 30 caracteres');
+        }
+
+        if(strlen($request->preview) > 149 && strlen($request->preview) < 200){
+
+            $artigo->title = $request->title;
+            $artigo->description = $request->description;
+            $artigo->preview = $request->preview;
+
+            $user = auth()->user();
+            $artigo->user_id = $user->id;
+            $artigo->save();
+
+            return back()->with('msg-success', 'Artigo criado com sucesso!');
+
+        } else {
+            return back()->with('msg-failed', 'Sua prévia deve conter entre 150 e 200 caracteres');
+        }
+
+        return back()->with('msg-failed', 'Não foi possível publicar o seu artigo!');
 
     }
 

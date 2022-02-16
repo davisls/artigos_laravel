@@ -1,6 +1,6 @@
 @extends('layouts.mainLayout')
 
-@section('title', 'Home')
+@section('title', 'Dashboard')
 
 @section('content')
 
@@ -18,7 +18,7 @@
                 <div class="card my-3">
                     <div class="card-body">
                         <h5 class="card-title">{{ $artigo->title }}</h5>
-                        <p class="card-text">{{ $artigo->description }}</p>
+                        <p class="card-text">{{ $artigo->preview }}</p>
                         <a href="/artigo/{{ $artigo->id }}" class="btn btn-outline-info">Saber Mais</a>
                     </div>
                 </div>
